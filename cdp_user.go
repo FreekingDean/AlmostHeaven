@@ -1,7 +1,7 @@
 package main
 
 import (
-	"enncoding/json"
+	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
