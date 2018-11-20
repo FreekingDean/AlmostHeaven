@@ -17,8 +17,9 @@ type Server struct {
 func NewServer() *Server {
 	r := mux.NewRouter()
 	r.Methods("GET").PathPrefix("/session/get-login-token").HandlerFunc(GetToken)
-	r.Methods("POST").PathPrefix("/sesion/login").HandlerFunc(Login)
+	r.Methods("POST").PathPrefix("/session/login").HandlerFunc(Login)
 	r.Methods("POST").PathPrefix("/log/v3/collect_logdata").HandlerFunc(Log)
+	r.Methods("POST").PathPrefix("/log/collect_errordata").HandlerFunc(Log)
 	r.Methods("GET").PathPrefix("/ping").HandlerFunc(Ping)
 	r.Methods("GET").PathPrefix("/cdp-user/ping").HandlerFunc(Ping)
 	r.Methods("GET").PathPrefix("/cdp-user/version-info").HandlerFunc(VersionInfo)
