@@ -59,6 +59,6 @@ func (u *User) JWT() *JWTClaims {
 }
 
 func (c *JWTClaims) String() (string, error) {
-	token := jwt.NewWithClaims(jwt.SigningMethodHS256, c)
+	token := jwt.NewWithClaims(jwt.SigningMethodES256, c)
 	return token.SignedString(jwtSecret)
 }
