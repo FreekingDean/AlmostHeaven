@@ -1,6 +1,6 @@
 package auth
 
-type JWT struct {
+type JWTClaims struct {
 	//Standard JWT Claim Info
 	JTI        string `json:"jti"` //JWT ID
 	IAT        int    `json:"iat"` //Issued at
@@ -44,6 +44,11 @@ type JWT struct {
 	} `json:"status"`
 }
 
-func (u *User) GenerateJWT() string {
+func (u *User) JWT() *JWTClaims {
 	//Build JWT using library & return as string
+	return &JWTClaims{}
+}
+
+func (_ *JWTClaims) String() string {
+	return "SESSION_TOKEN"
 }

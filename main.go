@@ -20,5 +20,15 @@ func main() {
 }
 
 func generateUUID() string {
-	return uuid.Must(uuid.NewV4()).String()
+	return uuid.NewV4().String()
+}
+
+func buildPlatformSuccess(resp interface{}) *GenericPlatformResponse {
+	return &GenericPlatformResponse{
+		PlatformResponse: &PlatformResponse{
+			Code:     2000,
+			Message:  "success",
+			Response: resp,
+		},
+	}
 }
