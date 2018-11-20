@@ -20,7 +20,7 @@ func main() {
 }
 
 func generateUUID() string {
-	return uuid.NewV4().String()
+	return uuid.Must(uuid.NewV4()).String()
 }
 
 func buildPlatformSuccess(resp interface{}) *GenericPlatformResponse {
