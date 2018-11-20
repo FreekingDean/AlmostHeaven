@@ -74,6 +74,11 @@ func Login(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	token, err := user.JWT().String()
+	if err != nil {
+		log.Println(err)
+		return
+	}
 	resp := &LoginResponse{
 		ApplicationID:   fallout76ApplicationID,
 		BUID:            user.ID,
@@ -86,7 +91,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 		TimeToExpire:    defaultExpiryTime,
 
 		SessionType:  defaultSessionType,
-		SessionToken: user.JWT().String(),
+		SessionToken: token,
 	}
 	fullResp := buildPlatformSuccess(resp)
 	err = json.NewEncoder(w).Encode(fullResp)

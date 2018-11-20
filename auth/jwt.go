@@ -1,6 +1,15 @@
 package auth
 
+import (
+	jwt "github.com/dgrijalva/jwt-go"
+)
+
+const (
+	jwtSecret = "no secret"
+)
+
 type JWTClaims struct {
+	jwt.StandardClaims
 	//Standard JWT Claim Info
 	JTI        string `json:"jti"` //JWT ID
 	IAT        int    `json:"iat"` //Issued at
@@ -49,6 +58,7 @@ func (u *User) JWT() *JWTClaims {
 	return &JWTClaims{}
 }
 
-func (_ *JWTClaims) String() string {
-	return "SESSION_TOKEN"
+func (c *JWTClaims) String() (string, error) {
+	token := jwt.NewWithClaims(jwt.SigningMethodHS256, c)
+	return token.SignedString(jwtSecret)
 }
