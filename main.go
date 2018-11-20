@@ -15,7 +15,7 @@ type PlatformResponse struct {
 }
 
 func main() {
-	server := Server{}
+	server := NewServer()
 	server.Start()
 }
 
