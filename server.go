@@ -17,7 +17,7 @@ type Server struct {
 func NewServer() *Server {
 	r := mux.NewRouter()
 	r.Methods("GET").PathPrefix("/session/get-login-token").HandlerFunc(GetToken)
-	r.Methods("POST")
+	r.Methods("POST").PathPrefix("/sesion/login").HandlerFunc(Login)
 	return &Server{r: r}
 }
 
