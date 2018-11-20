@@ -18,6 +18,7 @@ func NewServer() *Server {
 	r := mux.NewRouter()
 	r.Methods("GET").PathPrefix("/session/get-login-token").HandlerFunc(GetToken)
 	r.Methods("POST").PathPrefix("/sesion/login").HandlerFunc(Login)
+	r.Methods("POST").PathPrefix("/log/v3/collect_logdata").HandlerFunc(Log)
 	return &Server{r: r}
 }
 
