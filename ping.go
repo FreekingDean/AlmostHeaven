@@ -5,6 +5,6 @@ import (
 	"net/http"
 )
 
-func Ping(w *http.ResponseWriter, _ *http.Request) {
+func Ping(w http.ResponseWriter, _ *http.Request) {
 	fmt.Fprintf(w, "pong")
 }
