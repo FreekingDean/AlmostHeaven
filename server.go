@@ -21,6 +21,7 @@ func NewServer() *Server {
 	r.Methods("POST").PathPrefix("/log/v3/collect_logdata").HandlerFunc(Log)
 	r.Methods("GET").PathPrefix("/ping").HandlerFunc(Ping)
 	r.Methods("GET").PathPrefix("/cdp-user/ping").HandlerFunc(Ping)
+	r.Methods("GET").PathPrefix("/cdp-user/version-info").HandlerFunc(VersionInfo)
 	return &Server{r: r}
 }
 
