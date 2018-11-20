@@ -20,6 +20,7 @@ func NewServer() *Server {
 	r.Methods("POST").PathPrefix("/sesion/login").HandlerFunc(Login)
 	r.Methods("POST").PathPrefix("/log/v3/collect_logdata").HandlerFunc(Log)
 	r.Methods("GET").PathPrefix("/ping").HandlerFunc(Ping)
+	r.Methods("GET").PathPrefix("/cdp-user/ping").HandlerFunc(Ping)
 	return &Server{r: r}
 }
 
