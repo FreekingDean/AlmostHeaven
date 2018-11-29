@@ -85,17 +85,14 @@ func Login(w http.ResponseWriter, r *http.Request) {
 		MasterAccountID: user.ID,
 		Username:        user.Username,
 		ExternalAccount: struct{}{},
-		RefreshTime:     time.Now().Add(defaultRefreshTime).Unix(),
+		RefreshTime:     time.Now().Add(time.Second * defaultRefreshTime).Unix(),
 		TimeToRefresh:   defaultRefreshTime,
-		Expiration:      time.Now().Add(defaultExpiryTime).Unix(),
+		Expiration:      time.Now().Add(time.Second * defaultExpiryTime).Unix(),
 		TimeToExpire:    defaultExpiryTime,
 
 		SessionType:  defaultSessionType,
 		SessionToken: token,
 	}
 	fullResp := buildPlatformSuccess(resp)
-	err = json.NewEncoder(w).Encode(fullResp)
-	if err != nil {
-		log.Println(err)
-	}
+	DefaultJSONEncoder(w, fullResp)
 }

@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"log"
 	"net/http"
 	"os"
@@ -24,6 +25,7 @@ func NewServer() *Server {
 	r.Methods("POST").PathPrefix("/cms/message").HandlerFunc(Message)
 	r.Methods("GET").PathPrefix("/cdp-user/ping").HandlerFunc(Ping)
 	r.Methods("GET").PathPrefix("/cdp-user/version-info").HandlerFunc(VersionInfo)
+	r.Methods("GET").PathPrefix("/titlestorage/v1/products/my-product/platforms/pc/slots/1/branches/prodpc01").HandlerFunc(TitleStorage)
 	return &Server{r: r}
 }
 
@@ -34,8 +36,10 @@ func (s *Server) Start() {
 }
 
 func DefaultJSONEncoder(w http.ResponseWriter, d interface{}) {
-	err := json.NewEncoder(w).Encode(d)
+	output, err := json.Marshal(d)
 	if err != nil {
 		log.Println("Error ", err)
 	}
+	fmt.Println(string(output))
+	fmt.Fprintf(w, string(output))
 }

@@ -5,7 +5,7 @@ import (
 )
 
 type GenericPlatformResponse struct {
-	PlatformResponse *PlatformResponse `json:"platform_response"`
+	PlatformResponse *PlatformResponse `json:"platform"`
 }
 
 type PlatformResponse struct {
