@@ -26,6 +26,9 @@ func NewServer() *Server {
 	r.Methods("GET").PathPrefix("/cdp-user/ping").HandlerFunc(Ping)
 	r.Methods("GET").PathPrefix("/cdp-user/version-info").HandlerFunc(VersionInfo)
 	r.Methods("GET").PathPrefix("/titlestorage/v1/products/my-product/platforms/pc/slots/1/branches/prodpc01").HandlerFunc(TitleStorage)
+	r.Methods("GET").PathPrefix("/titlestorage/actualstorage/gateways").HandlerFunc(TitleStorageGateways)
+	r.Methods("GET").PathPrefix("/notification/v1/system").HandlerFunc(GetNotification)
+	r.Methods("HEAD").PathPrefix("/regions/{id}/ping").HandlerFunc(RegionPing)
 	return &Server{r: r}
 }
 
