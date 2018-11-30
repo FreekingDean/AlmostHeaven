@@ -29,6 +29,9 @@ func NewServer() *Server {
 	r.Methods("GET").PathPrefix("/titlestorage/actualstorage/gateways").HandlerFunc(TitleStorageGateways)
 	r.Methods("GET").PathPrefix("/notification/v1/system").HandlerFunc(GetNotification)
 	r.Methods("HEAD").PathPrefix("/regions/{id}/ping").HandlerFunc(RegionPing)
+	r.Methods("POST").PathPrefix("/loginqueue/bps/pub/ticket").HandlerFunc(LoginQueueTicket)
+	r.Methods("PUT").PathPrefix("/loginqueue/bps/pub/ticket").HandlerFunc(LoginQueueTicket)
+	r.Methods("POST").PathPrefix("/gateway/bps/pub/v2/login").HandlerFunc(GatewayLogin)
 	return &Server{r: r}
 }
 
