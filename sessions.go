@@ -96,3 +96,13 @@ func Login(w http.ResponseWriter, r *http.Request) {
 	fullResp := buildPlatformSuccess(resp)
 	DefaultJSONEncoder(w, fullResp)
 }
+
+func Logout(w http.ResponseWriter, r *http.Request) {
+	sresp := struct {
+		Success bool `json:"success"`
+	}{
+		Success: true,
+	}
+	resp := buildPlatformSuccess(sresp)
+	DefaultJSONEncoder(w, resp)
+}

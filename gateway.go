@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
 )
 
@@ -17,4 +18,8 @@ func GatewayLogin(w http.ResponseWriter, r *http.Request) {
 		"SomeUsername",
 	}
 	DefaultJSONEncoder(w, resp)
+}
+
+func GatewayLobbyReconnect(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, `{"lobby":null}`)
 }
